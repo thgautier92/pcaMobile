@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar primary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Règles du PCA</ion-title>
+    <button end menuToggle="menuR"><ion-icon name="cloud"></ion-icon></button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home">
+  <ion-card>
+    <ion-card-header>
+      Les outils du PCA
+    </ion-card-header>
+    <ion-card-content padding>
+      <button danger rigth (click)="declencherPCA()">Déclencher une alerte PCA  <ion-icon name="arrow-forward"></ion-icon></button>
+      <p padding>Cette fonction permet de déclencher une alerte de Plan de Continuité d'Activité sur un site SMA.</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header bg-primary>
+      Instructions
+    </ion-card-header>
+    <ion-card-content padding text-wrap>
+      L'alerte PCA ne peut être déclenchée que par les personnes habilitées du site concerné (Responsable, Directeur Régional ...).
+      Elle permet de communiquer et de mettre en relation les Directions DAGE, DSI et DRH. Chacune des directions citées
+      retournera au déclencheur les coordonnées de son correspondant sur l'alerte. La phase de "crise PCA " consécutive ne
+      sera mise en oeuvre qu'en fonction de la gravité du sinistre.
+    </ion-card-content>
+  </ion-card>
+</ion-content>

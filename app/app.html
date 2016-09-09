@@ -1,0 +1,30 @@
+<ion-menu [content]="content">
+    <ion-toolbar>
+        <img src="img/logo_sma.png" />
+        <ion-title>Options</ion-title>
+    </ion-toolbar>
+    <ion-content>
+        <ion-list>
+            <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon [name]="p.icon" item-left [ngStyle]="{'color': getColor()}"></ion-icon> {{p.title}}
+      </button>
+            <ion-item-divider></ion-item-divider>
+            <ion-item>Version 2.0</ion-item>
+            <ion-item (click)="reset()">
+                <ion-icon name="trash" danger></ion-icon> Reset</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<ion-menu type="overlay" danger id="menuR" [content]="content" side="right">
+    <ion-toolbar danger>
+        <ion-title> Etat du réseau</ion-title>
+        <ion-buttons start>
+            <button menuClose="menuR">Fermer</button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-content>
+        <network></network>
+    </ion-content>
+</ion-menu>
+<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>
+<loading-modal id="loading"></loading-modal>

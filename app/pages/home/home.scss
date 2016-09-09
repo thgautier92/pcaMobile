@@ -1,0 +1,10 @@
+.home {
+    ion-card-header{
+        background-color: color($colors, primary);
+        color:color($colors, light);
+    }    
+}
+.error{
+    background-color: color($colors, danger);
+}
+

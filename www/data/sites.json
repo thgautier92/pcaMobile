@@ -1,0 +1,188 @@
+{
+	"sites": [
+		"ALBI", "ALENCON", "ALFORTVILLE", "AMIENS", "ANGERS", "ANGOULEME", "ANTONY", "ASNIERES SUR SEINE", "TOULON (LA VALETTE DU VAR)"
+	],
+	"adresses": [
+		{
+			"site": "ALBI",
+			"adresse": "23-25 Boulevard Lacombe"
+		}, {
+			"site": "ALENCON",
+			"adresse": "21 avenue de Basingstocke"
+		}, {
+			"site": "ALFORTVILLE",
+			"adresse": "ZAC des bords de Marne, 5 rue charles de Gaulle"
+		}, {
+			"site": "AMIENS",
+			"adresse": "9 avenue d'Italie"
+		}, {
+			"site": "ANGERS",
+			"adresse": "33 rue Bodinier"
+		}, {
+			"site": "ANGOULEME",
+			"adresse": "262 rue Fontchaudière"
+		}, {
+			"site": "ANTONY",
+			"adresse": "2-6 place du Général De Gaulle"
+		}, {
+			"site": "ASNIERES SUR SEINE",
+			"adresse": "113 Quai Aulagnier"
+		}, {
+			"site": "TOULON (LA VALETTE DU VAR)",
+			"adresse": "235 avenue Pierre et Marie Curie"
+		}
+	],
+	"personnels": [
+		{
+			"site": "ALBI",
+			"nom": "Christophe LUCAS",
+			"fonction": "Responsable site",
+			"telephone": "0632338448"
+		}, {
+			"site": "ALBI",
+			"nom": "PRENOM NOM",
+			"fonction": "Directeur régional",
+			"telephone": "0000000000"
+		}, {
+			"site": "ALBI",
+			"nom": "PRENOM NOM",
+			"fonction": "Autre",
+			"telephone": "0000000000"
+		}, {
+			"site": "ALENCON",
+			"nom": "PRENOM NOM",
+			"fonction": "Responsable site",
+			"telephone": "0000000000"
+		}, {
+			"site": "ALENCON",
+			"nom": "PRENOM NOM",
+			"fonction": "Directeur régional",
+			"telephone": "0000000000"
+		}, {
+			"site": "ALENCON",
+			"nom": "PRENOM NOM",
+			"fonction": "Autre",
+			"telephone": "0000000000"
+		}, {
+			"site": "ALFORTVILLE",
+			"nom": "PRENOM NOM",
+			"fonction": "Responsable site",
+			"telephone": "0000000000"
+		}, {
+			"site": "ALFORTVILLE",
+			"nom": "PRENOM NOM",
+			"fonction": "Directeur régional",
+			"telephone": "0000000000"
+		}, {
+			"site": "ALFORTVILLE",
+			"nom": "PRENOM NOM",
+			"fonction": "Autre",
+			"telephone": "0000000000"
+		}, {
+			"site": "AMIENS",
+			"nom": "PRENOM NOM",
+			"fonction": "Responsable site",
+			"telephone": "0000000000"
+		}, {
+			"site": "AMIENS",
+			"nom": "PRENOM NOM",
+			"fonction": "Directeur régional",
+			"telephone": "0000000000"
+		}, {
+			"site": "AMIENS",
+			"nom": "PRENOM NOM",
+			"fonction": "Autre",
+			"telephone": "0000000000"
+		}, {
+			"site": "ANGERS",
+			"nom": "PRENOM NOM",
+			"fonction": "Responsable site",
+			"telephone": "0000000000"
+		}, {
+			"site": "ANGERS",
+			"nom": "PRENOM NOM",
+			"fonction": "Directeur régional",
+			"telephone": "0000000000"
+		}, {
+			"site": "ANGERS",
+			"nom": "PRENOM NOM",
+			"fonction": "Autre",
+			"telephone": "0000000000"
+		}, {
+			"site": "ANGOULEME",
+			"nom": "PRENOM NOM",
+			"fonction": "Responsable site",
+			"telephone": "0000000000"
+		}, {
+			"site": "ANGOULEME",
+			"nom": "PRENOM NOM",
+			"fonction": "Directeur régional",
+			"telephone": "0000000000"
+		}, {
+			"site": "ANGOULEME",
+			"nom": "PRENOM NOM",
+			"fonction": "Autre",
+			"telephone": "0000000000"
+		}, {
+			"site": "ANTONY",
+			"nom": "PRENOM NOM",
+			"fonction": "Responsable site",
+			"telephone": "0000000000"
+		}, {
+			"site": "ANTONY",
+			"nom": "PRENOM NOM",
+			"fonction": "Directeur régional",
+			"telephone": "0000000000"
+		}, {
+			"site": "ANTONY",
+			"nom": "PRENOM NOM",
+			"fonction": "Autre",
+			"telephone": "0000000000"
+		}, {
+			"site": "ASNIERES SUR SEINE",
+			"nom": "PRENOM NOM",
+			"fonction": "Responsable site",
+			"telephone": "0000000000"
+		}, {
+			"site": "ASNIERES SUR SEINE",
+			"nom": "PRENOM NOM",
+			"fonction": "Directeur régional",
+			"telephone": "0000000000"
+		}, {
+			"site": "ASNIERES SUR SEINE",
+			"nom": "PRENOM NOM",
+			"fonction": "Autre",
+			"telephone": "0000000000"
+		}, {
+			"site": "TOULON (LA VALETTE DU VAR)",
+			"nom": "PRENOM NOM",
+			"fonction": "Responsable site",
+			"telephone": "0000000000"
+		}, {
+			"site": "TOULON (LA VALETTE DU VAR)",
+			"nom": "PRENOM NOM",
+			"fonction": "Directeur régional",
+			"telephone": "0000000000"
+		}, {
+			"site": "TOULON (LA VALETTE DU VAR)",
+			"nom": "PRENOM NOM",
+			"fonction": "Autre",
+			"telephone": "0000000000"
+		}
+	],
+	"membres": [
+		{
+			"nom": "NOM PRENOM",
+			"fonction": "DSI",
+			"telephone": "0000000000"
+		}, {
+			"nom": "NOM PRENOM",
+			"fonction": "DSI",
+			"telephone": "0000000000"
+		}, {
+			"nom": "NOM PRENOM",
+			"fonction": "DRH",
+			"telephone": "0000000000"
+		}
+	]
+}
