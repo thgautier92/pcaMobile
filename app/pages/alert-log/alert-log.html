@@ -11,13 +11,16 @@
 </ion-header>
 <ion-content padding>
   <ion-list text-wrap>
-    <ion-item-divider primary>{{sendLog[0].site}}</ion-item-divider>
-    <ion-item *ngFor="let item of sendLog">
-      <ion-label>{{item.person.site}} - {{item.person.nom}}
-        <p primary>{{item.person.fonction}}</p>
-        <p primary>{{item.msg}}</p>
+    <ion-item-divider primary>{{sendLog.site}}</ion-item-divider>
+    <ion-item>
+      <ion-label>SMS envoyés</ion-label>
+      <ion-checkbox dark checked="sendLog.sendOk" disabled="true"></ion-checkbox>
+    </ion-item>
+    <ion-item>{{item.msg}}</ion-item>
+    <ion-item *ngFor="let item of sendLog.persons">
+      <ion-label>{{item.site}} - {{item.nom}}
+        <p primary>{{item.fonction}}</p>
       </ion-label>
-      <ion-checkbox dark checked="item.sendOk" disabled="true"></ion-checkbox>
     </ion-item>
   </ion-list>
 </ion-content>

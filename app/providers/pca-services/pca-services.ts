@@ -35,22 +35,28 @@ export class PcaServices {
   }
   sendSMS(listePersonnes, message, site) {
     return new Promise((resolve, reject) => {
-      var sendLog = [];
+      var sendLog = {};
       // Envoi des SMS
+      let lstTel = []
       for (var key in listePersonnes) {
         let value = listePersonnes[key];
-        try {
-          SMS.send(value.telephone, message).then(response => {
-            sendLog.push({ "site": site, "person": value, "sendOK": true, "msg": "" });
-          }, error => {
-            sendLog.push({ "site": site, "person": value, "sendOK": false, "msg": JSON.stringify(error) });
-          });
-        } catch (err) {
-          sendLog.push({ "site": site, "person": value, "sendOK": false, "msg": JSON.stringify(err) });
-        }
-
-      };
-      resolve(sendLog);
+        lstTel.push(value['telephone']);
+      }
+      let telOut = lstTel.join();
+      try {
+        SMS.send(telOut, message).then(response => {
+          sendLog={ "site": site, "person": listePersonnes, "sendOK": true, "msg": "" };
+          resolve(sendLog);
+        }, error => {
+          console.log(error);
+          sendLog={ "site": site, "person": listePersonnes, "sendOK": false, "msg": error };
+          reject(sendLog);
+        });
+      } catch (err) {
+        console.log(err);
+        sendLog={ "site": site, "person": listePersonnes, "sendOK": false, "msg": err };
+        reject(sendLog);
+      }
     });
   }
   getRandomColor() {

@@ -76,15 +76,16 @@ export class DeclenchementPcaPage {
           //this.pcaServices.checkUserAuthorizedByPhoneNumber(phoneNumber).then(response => {
           console.log("Envoie du SMS");
           this.dataServices.getData('rights').then(response => {
-            var message = 'Alerte PCA : Un incident a été rencontré sur le site ' + this.pca.site + '. Votre correspondant doit prendre contact avec ' + person['nom'] + ' au ' + phoneNumber + 'dans les plus brefs délais.';
+            var message = 'SMA-Alerte PCA : Un incident a été rencontré sur le site ' + this.pca.site + '. Votre correspondant doit prendre contact avec ' + person['nom'] + ' au ' + phoneNumber + ' dans les plus brefs délais.';
             let lstDest = response['membersauthorized'];
             lstDest = lstDest.concat(this.persons);
             console.log("DESTINATAIRES", lstDest);
             this.pcaServices.sendSMS(lstDest, message, this.pca.site).then(sendLog => {
-              console.log(sendLog);
-              this.navCtrl.push(AlertLogPage,{"sendLog":sendLog});
+              //console.log(sendLog);
+              this.navCtrl.push(AlertLogPage,sendLog);
             }, sendError => {
-              console.log(sendError);
+              //console.log(sendError);
+              this.navCtrl.push(AlertLogPage,sendError);
             });
           }, error => {
             let toast = this.toast.create({ "message": "L'application n'est pas correctement paramétrée. Veuillez contacter le Support", duration: 3000, cssClass: "error" });

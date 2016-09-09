@@ -11,9 +11,9 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'build/pages/alert-log/alert-log.html',
 })
 export class AlertLogPage {
-  sendLog: any;
+  sendLog: any = {};
   constructor(private navCtrl: NavController, private navParams: NavParams) {
-    this.sendLog = this.navParams.get('sendLog');
+    this.sendLog = this.navParams;
     console.log(this.sendLog);
   }
   close() {
