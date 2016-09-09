@@ -8,10 +8,8 @@
             <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
         <ion-icon [name]="p.icon" item-left [ngStyle]="{'color': getColor()}"></ion-icon> {{p.title}}
       </button>
-            <ion-item-divider></ion-item-divider>
-            <ion-item>Version 2.0</ion-item>
-            <ion-item (click)="reset()">
-                <ion-icon name="trash" danger></ion-icon> Reset</ion-item>
+    <ion-item-divider></ion-item-divider>
+    <ion-item>Version 2.0</ion-item>
         </ion-list>
     </ion-content>
 </ion-menu>

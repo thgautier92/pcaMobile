@@ -1,0 +1,22 @@
+{
+	"membersauthorized": [
+		{
+			"site": "Mercure",
+			"nom": "GAUTIER Thierry",
+			"fonction": "Chargé études",
+			"telephone": "0699216805"
+		},
+		{
+			"site": "DSI Orleans",
+			"nom": "LUCAS Christophe",
+			"fonction": "Responsable DSI",
+			"telephone": "0699216805"
+		},
+		{
+			"site": "Siège",
+			"nom": "NOM PRENOM",
+			"fonction": "Responsable DRH",
+			"telephone": "0699216805"
+		}
+	]
+}
