@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, Storage, LocalStorage, ToastController} from 'ionic-angular';
-import {DataServices} from '../../providers/data/data'
+import {DataServices} from '../../providers/data/data';
 import {PcaServices} from '../../providers/pca-services/pca-services';
 import {AlertLogPage} from '../alert-log/alert-log'
 
@@ -15,17 +15,23 @@ import {AlertLogPage} from '../alert-log/alert-log'
   providers: [DataServices, PcaServices]
 })
 export class DeclenchementPcaPage {
-  local: any;
+  local: LocalStorage;
   sitesParam: any;
   persons: any
   pca: any;
+  mode:any;
   constructor(private navCtrl: NavController, private toast: ToastController, private dataServices: DataServices, private pcaServices: PcaServices, private alertCtrl: AlertController) {
     this.local = new Storage(LocalStorage);
     this.sitesParam = [];
     this.pca = { "site": "", "person": "" };
   }
-  ngAfterViewInit() {
+  ngOnInit() {
     this.loadSites();
+    this.local.get("mode").then(response=>{
+      this.mode=JSON.parse(response);
+    },error=>{
+      this.mode = { "test": false, "phone": "" };
+    })
   }
   loadSites() {
     this.dataServices.getData('sites').then(response => {
@@ -80,7 +86,7 @@ export class DeclenchementPcaPage {
             let lstDest = response['membersauthorized'];
             lstDest = lstDest.concat(this.persons);
             console.log("DESTINATAIRES", lstDest);
-            this.pcaServices.sendSMS(lstDest, message, this.pca.site).then(sendLog => {
+            this.pcaServices.sendSMS(lstDest, message, this.pca.site,this.mode).then(sendLog => {
               //console.log(sendLog);
               this.navCtrl.push(AlertLogPage,sendLog);
             }, sendError => {

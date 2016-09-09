@@ -15,30 +15,49 @@ export class ParamsPage {
   mode: any = {};
   constructor(private navCtrl: NavController, private toast: ToastController) {
     this.local = new Storage(LocalStorage);
+    this.mode = { "test": false, "phone": "" };
   }
-  loadMode() {
+  ngOnInit() {
     this.local.get("mode").then(response => {
-      console.log(response);
-      this.mode = JSON.parse(response);
+      if (response) {
+        this.mode = JSON.parse(response);
+      } else {
+        this.mode = { "test": false, "phone": "" };
+      }
     }, error => {
+      console.log(error);
       this.mode = { "test": false, "phone": "" };
     })
   }
-  activate() {
-    console.log(this.mode);
+  activate(event) {
+    if (this.mode['test']) {
+      if (this.mode['phone'] !== "") {
+        this.storeMode();
+        let toast = this.toast.create({ "message": "Mode test activé", duration: 3000 });
+        toast.present();
+      } else {
+        event['_checked'] = false;
+        let toast = this.toast.create({ "message": "Veuillez saisie un numéro de telephone", duration: 3000 });
+        toast.present();
+      }
+    } else {
+      this.storeMode();
+      let toast = this.toast.create({ "message": "Mode test inactif", duration: 3000 });
+      toast.present();
+    }
+  }
+  storeMode() {
     this.local.set("mode", JSON.stringify(this.mode)).then(response => {
-      let toast = this.toast.create({ "message": "Mode test activé", duration: 3000 });
-      toast.present();
     }, error => {
-      console.log(error)
-      let toast = this.toast.create({ "message": error, duration: 3000, cssClass: "error" });
-      toast.present();
+      console.log(error);
     })
   }
   reset() {
     this.local.remove('pca_phonenumber').then(response => {
-      let toast = this.toast.create({ "message": "Propriétaire éffacé", duration: 3000 });
-      toast.present();
+      this.local.remove('mode').then(response => {
+        let toast = this.toast.create({ "message": "Propriétaire éffacé", duration: 3000 });
+        toast.present();
+      }, error => { });
     }, error => {
       console.log(error)
       let toast = this.toast.create({ "message": error, duration: 3000, cssClass: "error" });

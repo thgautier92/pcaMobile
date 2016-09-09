@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {ToastController} from 'ionic-angular';
 import { Http } from '@angular/http';
 import { SMS } from 'ionic-native';
 import 'rxjs/add/operator/map';
@@ -6,14 +7,13 @@ import {DataServices} from '../data/data';
 
 /*
   Generated class for the PcaServices provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
 */
 @Injectable()
 export class PcaServices {
   listeMembersAuthorized: any;
-  constructor(private http: Http, private dataServices: DataServices) { }
+  mode: any;
+  constructor(private http: Http, private dataServices: DataServices, private toast: ToastController) {
+  }
 
   checkUserAuthorizedByPhoneNumber(pn) {
     return new Promise((resolve, reject) => {
@@ -33,28 +33,33 @@ export class PcaServices {
       });
     });
   }
-  sendSMS(listePersonnes, message, site) {
+  sendSMS(listePersonnes, message, site,mode ) {
     return new Promise((resolve, reject) => {
       var sendLog = {};
       // Envoi des SMS
       let lstTel = []
       for (var key in listePersonnes) {
         let value = listePersonnes[key];
-        lstTel.push(value['telephone']);
+        if (mode['test']) {
+          lstTel.push(mode['phone']);
+          listePersonnes[key]['telephone']=mode['phone'];
+        } else {
+          lstTel.push(value['telephone']);
+        }
       }
       let telOut = lstTel.join();
       try {
         SMS.send(telOut, message).then(response => {
-          sendLog={ "site": site, "person": listePersonnes, "sendOK": true, "msg": "" };
+          sendLog = { "site": site, "persons": listePersonnes, "sendOK": true, "msg": "SMS envoyés" };
           resolve(sendLog);
         }, error => {
           console.log(error);
-          sendLog={ "site": site, "person": listePersonnes, "sendOK": false, "msg": error };
+          sendLog = { "site": site, "persons": listePersonnes, "sendOK": false, "msg": "Envoie de SMS non disponible" };
           reject(sendLog);
         });
       } catch (err) {
         console.log(err);
-        sendLog={ "site": site, "person": listePersonnes, "sendOK": false, "msg": err };
+        sendLog = { "site": site, "persons": listePersonnes, "sendOK": false, "msg": "Envoie de SMS non disponible" };
         reject(sendLog);
       }
     });

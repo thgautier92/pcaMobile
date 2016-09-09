@@ -13,13 +13,13 @@
   <ion-list text-wrap>
     <ion-item-divider primary>{{sendLog.site}}</ion-item-divider>
     <ion-item>
-      <ion-label>SMS envoyés</ion-label>
+      <ion-label>{{sendLog.msg}}</ion-label>
       <ion-checkbox dark checked="sendLog.sendOk" disabled="true"></ion-checkbox>
     </ion-item>
-    <ion-item>{{item.msg}}</ion-item>
     <ion-item *ngFor="let item of sendLog.persons">
       <ion-label>{{item.site}} - {{item.nom}}
         <p primary>{{item.fonction}}</p>
+        <p primary>{{item.telephone}}</p>
       </ion-label>
     </ion-item>
   </ion-list>

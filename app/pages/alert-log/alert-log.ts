@@ -13,8 +13,7 @@ import { NavController, NavParams } from 'ionic-angular';
 export class AlertLogPage {
   sendLog: any = {};
   constructor(private navCtrl: NavController, private navParams: NavParams) {
-    this.sendLog = this.navParams;
-    console.log(this.sendLog);
+    this.sendLog = this.navParams['data'];
   }
   close() {
     this.navCtrl.pop();

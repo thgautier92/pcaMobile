@@ -21,11 +21,11 @@
       <ion-item>Activer le mode test, permet d'envoyer des sms à des téléphones de test</ion-item>
       <ion-item>
         <ion-label> Activer</ion-label>
-        <ion-toggle (ngModel)="mode.test" [checked]="mode.test" (ngModelChange)="activate()"></ion-toggle>
+        <ion-toggle [(ngModel)]="mode.test" (ionChange)="activate($event)"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label floating>Numéro de téléphone à qui envoyer les sms</ion-label>
-        <ion-input (ngModel)="mode.phone" type="tel"></ion-input>
+        <ion-input [(ngModel)]="mode.phone" type="tel"></ion-input>
       </ion-item>
     </ion-item-group>
     <ion-item-group>

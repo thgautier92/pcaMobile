@@ -1,17 +1,20 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Contacts
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
+<ion-content padding>
+ <ion-list>
+    <ion-item-divider primary>Liste des personnes à contacter en cas d'alerte</ion-item-divider>
+    <ion-item *ngFor="let person of lstDest" (click)="callIT(person.telephone)">
+        <h3>{{person.nom}}</h3>
+        <p>{{person.fonction}}</p>
+        <p>{{person.site}}</p>
+        <h3 item-right>{{person.telephone}}&nbsp;&nbsp;&nbsp;</h3>
+        <ion-icon danger name="call" item-right></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

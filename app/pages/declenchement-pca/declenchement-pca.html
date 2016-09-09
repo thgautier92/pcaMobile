@@ -8,11 +8,13 @@
 
   <ion-navbar>
     <ion-title>Déclencher une alerte</ion-title>
+    <ion-buttons end>
+      <button *ngIf="mode">
+        <ion-icon *ngIf="mode.test" name="call" danger></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
   <ion-list>
     <ion-item>
