@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Storage, LocalStorage, ToastController} from 'ionic-angular';
+import { NavController, AlertController, Storage, LocalStorage, ToastController, LoadingController} from 'ionic-angular';
 import {DataServices} from '../../providers/data/data';
 import {PcaServices} from '../../providers/pca-services/pca-services';
 import {AlertLogPage} from '../alert-log/alert-log'
@@ -19,17 +19,17 @@ export class DeclenchementPcaPage {
   sitesParam: any;
   persons: any
   pca: any;
-  mode:any;
-  constructor(private navCtrl: NavController, private toast: ToastController, private dataServices: DataServices, private pcaServices: PcaServices, private alertCtrl: AlertController) {
+  mode: any;
+  constructor(private navCtrl: NavController, private toast: ToastController, private dataServices: DataServices, private pcaServices: PcaServices, private alertCtrl: AlertController, private loading: LoadingController) {
     this.local = new Storage(LocalStorage);
     this.sitesParam = [];
     this.pca = { "site": "", "person": "" };
   }
   ngOnInit() {
     this.loadSites();
-    this.local.get("mode").then(response=>{
-      this.mode=JSON.parse(response);
-    },error=>{
+    this.local.get("mode").then(response => {
+      this.mode = JSON.parse(response);
+    }, error => {
       this.mode = { "test": false, "phone": "" };
     })
   }
@@ -79,19 +79,22 @@ export class DeclenchementPcaPage {
       console.log("Local : ", phoneNumber);
       if (phoneNumber && phoneNumber !== null && phoneNumber.length > 0) {
         if (person['telephone'] === phoneNumber) {
-          //this.pcaServices.checkUserAuthorizedByPhoneNumber(phoneNumber).then(response => {
-          console.log("Envoie du SMS");
+          //console.log("Envoie du SMS");
           this.dataServices.getData('rights').then(response => {
+            let loader = this.loading.create({ content: "Envoi en cours...", duration: 3000 });
+            loader.present();
             var message = 'SMA-Alerte PCA : Un incident a été rencontré sur le site ' + this.pca.site + '. Votre correspondant doit prendre contact avec ' + person['nom'] + ' au ' + phoneNumber + ' dans les plus brefs délais.';
             let lstDest = response['membersauthorized'];
             lstDest = lstDest.concat(this.persons);
-            console.log("DESTINATAIRES", lstDest);
-            this.pcaServices.sendSMS(lstDest, message, this.pca.site,this.mode).then(sendLog => {
+            //console.log("DESTINATAIRES", lstDest);
+            this.pcaServices.sendSMS(lstDest, message, this.pca.site, this.mode).then(sendLog => {
               //console.log(sendLog);
-              this.navCtrl.push(AlertLogPage,sendLog);
+              loader.dismiss();
+              this.navCtrl.push(AlertLogPage, sendLog);
             }, sendError => {
               //console.log(sendError);
-              this.navCtrl.push(AlertLogPage,sendError);
+              loader.dismiss();
+              this.navCtrl.push(AlertLogPage, sendError);
             });
           }, error => {
             let toast = this.toast.create({ "message": "L'application n'est pas correctement paramétrée. Veuillez contacter le Support", duration: 3000, cssClass: "error" });

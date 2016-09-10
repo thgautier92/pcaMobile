@@ -17,6 +17,7 @@ export class ContactPage {
     }, error => { })
   }
   callIT(passedNumber) {
-    window.location = passedNumber;
+    let url='tel:'+passedNumber;
+    window.location.assign(url);
   }
 }

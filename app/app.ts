@@ -27,7 +27,8 @@ export class MyApp {
       { title: 'Paramètres', component: ParamsPage, icon: 'cog', color: "primary" }
     ];
     platform.ready().then(() => {
-      StatusBar.styleDefault();
+      //StatusBar.styleDefault();
+      StatusBar.backgroundColorByHexString('#ffffff');
     });
   }
   openPage(page) {

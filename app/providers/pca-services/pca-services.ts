@@ -50,11 +50,12 @@ export class PcaServices {
       let telOut = lstTel.join();
       try {
         SMS.send(telOut, message).then(response => {
+          console.log(response);
           sendLog = { "site": site, "persons": listePersonnes, "sendOK": true, "msg": "SMS envoyés" };
           resolve(sendLog);
         }, error => {
-          console.log(error);
-          sendLog = { "site": site, "persons": listePersonnes, "sendOK": false, "msg": "Envoie de SMS non disponible" };
+          console.log("Error return",error);
+          sendLog = { "site": site, "persons": listePersonnes, "sendOK": true, "msg": "SMS envoyés" };
           reject(sendLog);
         });
       } catch (err) {

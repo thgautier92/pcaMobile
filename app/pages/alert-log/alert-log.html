@@ -14,7 +14,7 @@
     <ion-item-divider primary>{{sendLog.site}}</ion-item-divider>
     <ion-item>
       <ion-label>{{sendLog.msg}}</ion-label>
-      <ion-checkbox dark checked="sendLog.sendOk" disabled="true"></ion-checkbox>
+      <ion-checkbox secondary (checked)="sendLog.sendOk" disabled="true"></ion-checkbox>
     </ion-item>
     <ion-item *ngFor="let item of sendLog.persons">
       <ion-label>{{item.site}} - {{item.nom}}

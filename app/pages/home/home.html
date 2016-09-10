@@ -3,18 +3,18 @@
     <button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Règles du PCA</ion-title>
+    <ion-title>Les outils du PCA</ion-title>
     <button end menuToggle="menuR"><ion-icon name="cloud"></ion-icon></button>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="home">
   <ion-card>
-    <ion-card-header>
-      Les outils du PCA
-    </ion-card-header>
     <ion-card-content padding>
-      <button danger rigth (click)="declencherPCA()">Déclencher une alerte PCA  <ion-icon name="arrow-forward"></ion-icon></button>
+      <div class="logo" text-center>
+        <img src="img/logo_sma.png" />
+      </div>
+      <button danger full (click)="declencherPCA()">Déclencher une alerte PCA  <ion-icon name="arrow-forward"></ion-icon></button>
       <p padding>Cette fonction permet de déclencher une alerte de Plan de Continuité d'Activité sur un site SMA.</p>
     </ion-card-content>
   </ion-card>
