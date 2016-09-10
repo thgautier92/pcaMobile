@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, Storage, LocalStorage, ToastController } from 'ionic-angular';
+import {DataServices} from '../../providers/data/data';
+import {groupBy, KeysPipe} from '../../pipes/common';
 
 /*
   Generated class for the ParamsPage page.
@@ -9,15 +11,20 @@ import { NavController, Storage, LocalStorage, ToastController } from 'ionic-ang
 */
 @Component({
   templateUrl: 'build/pages/params/params.html',
+  providers: [DataServices],
+  pipes: [groupBy, KeysPipe]
 })
 export class ParamsPage {
   local: LocalStorage;
   mode: any = {};
-  constructor(private navCtrl: NavController, private toast: ToastController) {
+  lstSites: any;
+  constructor(private navCtrl: NavController, private toast: ToastController, private data: DataServices) {
     this.local = new Storage(LocalStorage);
     this.mode = { "test": false, "phone": "" };
+    this.lstSites = null;
   }
   ngOnInit() {
+    this.lstSites = null;
     this.local.get("mode").then(response => {
       if (response) {
         this.mode = JSON.parse(response);
@@ -63,5 +70,32 @@ export class ParamsPage {
       let toast = this.toast.create({ "message": error, duration: 3000, cssClass: "error" });
       toast.present();
     });
+  }
+  showParams() {
+    if (this.lstSites) {
+      this.lstSites = null;
+    } else {
+      this.lstSites = {};
+      this.data.getData('sites').then(response => {
+        let sites = response;
+        let siteNom = sites['sites'];
+        let siteAdresse = sites['adresses'];
+        let sitePersons = sites['personnels'];
+        let lst = [];
+        for (let site of sitePersons) {
+          lst.push({
+            "site": site['site'],
+            "adresse": siteAdresse.filter(item => item['site'] == site['site'])[0]['adresse'],
+            "nom": site['nom'],
+            "fonction": site['fonction'],
+            "telephone": site['telephone']
+          })
+        }
+        this.lstSites = new groupBy().transform(lst, 'site');
+      }, error => {
+        console.log(error);
+      });
+    }
+
   }
 }

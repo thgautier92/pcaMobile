@@ -18,6 +18,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   private rootPage: any;
   local: any;
+  version: any;
   pages: Array<{ title: string, component: any, icon: string, color: string }>;
   constructor(private platform: Platform, private menu: MenuController, private pcaServices: PcaServices) {
     this.rootPage = TabsPage;
@@ -29,13 +30,22 @@ export class MyApp {
     platform.ready().then(() => {
       //StatusBar.styleDefault();
       StatusBar.backgroundColorByHexString('#ffffff');
+      this.pcaServices.getVersionApp().then(response => {
+        console.log("VERSION", response);
+        this.version = response;
+      }, error => {
+        console.log(error);
+        this.version = "";
+      });
     });
+  }
+  ngOnInit() {
+
   }
   openPage(page) {
     this.menu.close();
     this.nav.setRoot(page['component']);
   }
-
   getColor() {
     return this.pcaServices.getRandomColor();
   };

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ToastController} from 'ionic-angular';
 import { Http } from '@angular/http';
-import { SMS } from 'ionic-native';
+import { SMS, AppVersion } from 'ionic-native';
 import 'rxjs/add/operator/map';
 import {DataServices} from '../data/data';
 
@@ -14,7 +14,25 @@ export class PcaServices {
   mode: any;
   constructor(private http: Http, private dataServices: DataServices, private toast: ToastController) {
   }
+  getVersionApp() {
+    return new Promise((resolve, reject) => {
+      let ver = "";
+      AppVersion.getVersionNumber().then(response => {
+        ver=response;
+        AppVersion.getVersionCode().then(response => {
+          ver=ver+'.'+response;
+          resolve(ver);
+        }, error => {
+          console.log(error);
+          reject(error);
+        });
+      }, error => {
+        console.log(error);
+        reject(error);
+      });
 
+    });
+  }
   checkUserAuthorizedByPhoneNumber(pn) {
     return new Promise((resolve, reject) => {
       this.dataServices.getData('rights').then(response => {
@@ -33,7 +51,7 @@ export class PcaServices {
       });
     });
   }
-  sendSMS(listePersonnes, message, site,mode ) {
+  sendSMS(listePersonnes, message, site, mode) {
     return new Promise((resolve, reject) => {
       var sendLog = {};
       // Envoi des SMS
@@ -42,7 +60,7 @@ export class PcaServices {
         let value = listePersonnes[key];
         if (mode['test']) {
           lstTel.push(mode['phone']);
-          listePersonnes[key]['telephone']=mode['phone'];
+          listePersonnes[key]['telephone'] = mode['phone'];
         } else {
           lstTel.push(value['telephone']);
         }
@@ -54,7 +72,7 @@ export class PcaServices {
           sendLog = { "site": site, "persons": listePersonnes, "sendOK": true, "msg": "SMS envoyés" };
           resolve(sendLog);
         }, error => {
-          console.log("Error return",error);
+          console.log("Error return", error);
           sendLog = { "site": site, "persons": listePersonnes, "sendOK": true, "msg": "SMS envoyés" };
           reject(sendLog);
         });
@@ -72,4 +90,5 @@ export class PcaServices {
 
     return color;
   }
+
 }

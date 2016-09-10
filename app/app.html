@@ -6,10 +6,9 @@
     <ion-content>
         <ion-list>
             <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon [name]="p.icon" item-left [ngStyle]="{'color': getColor()}"></ion-icon> {{p.title}}
-      </button>
-    <ion-item-divider></ion-item-divider>
-    <ion-item>Version 2.0</ion-item>
+            <ion-icon [name]="p.icon" item-left [ngStyle]="{'color': getColor()}"></ion-icon> {{p.title}}
+            </button>
+            <ion-item item-right danger><h6>&copy; Groupe SMA 2016-Ver.{{version}}</h6></ion-item>
         </ion-list>
     </ion-content>
 </ion-menu>

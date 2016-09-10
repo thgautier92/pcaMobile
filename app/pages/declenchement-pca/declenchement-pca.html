@@ -6,26 +6,26 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar danger>
     <ion-title>Déclencher une alerte</ion-title>
     <ion-buttons end>
       <button *ngIf="mode">
-        <ion-icon *ngIf="mode.test" name="call" danger></ion-icon>
+        <ion-icon *ngIf="mode.test" name="call" light></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-  <ion-list>
+<ion-content padding class="declenchement-pca">
+  <ion-list no-padding>
     <ion-item>
-      <ion-label primary>Sur quel site ?</ion-label>
+      <ion-label  primary>Sur quel site ?</ion-label>
       <ion-select [(ngModel)]="pca.site" (ngModelChange)="loadPersons()" okText="Choisir" cancelText="Annuler">
-        <ion-option value="">==  ==</ion-option>
+        <ion-option value="">== choisir un site ==</ion-option>
         <ion-option *ngFor="let site of sitesParam.sites" (value)="site">{{site}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-list>
+  <ion-list *ngIf="pca.site">
     <ion-item-divider primary>Qui êtes-vous, parmis les personnes habilitées ?</ion-item-divider>
     <ion-item *ngFor="let person of persons" (click)="verifAuth(person)">
         <h3>{{person.nom}}</h3>

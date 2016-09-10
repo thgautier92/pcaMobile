@@ -1,6 +1,6 @@
 {
   "name": "pcaMobile",
-  "app_id": "",
+  "app_id": "fr.groupe-sma.pcaMobile",
   "v2": true,
   "typescript": true
 }

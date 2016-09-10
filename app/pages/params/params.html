@@ -5,11 +5,11 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar secondary >
     <button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Paramétres</ion-title>
+    <ion-title>Paramètres</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -18,14 +18,14 @@
   <ion-list text-wrap>
     <ion-item-group>
       <ion-item-divider light>Mode test</ion-item-divider>
-      <ion-item>Activer le mode test, permet d'envoyer des sms à des téléphones de test</ion-item>
+      <ion-item>Activer le mode test, permet d'envoyer des sms à des téléphones de test.</ion-item>
       <ion-item>
         <ion-label> Activer</ion-label>
         <ion-toggle [(ngModel)]="mode.test" (ionChange)="activate($event)"></ion-toggle>
       </ion-item>
-      <ion-item>
-        <ion-label floating>Numéro de téléphone à qui envoyer les sms</ion-label>
-        <ion-input [(ngModel)]="mode.phone" type="tel"></ion-input>
+      <ion-item no-padding>
+        <ion-label floating>Numéro de téléphone à qui envoyer les sms de test</ion-label>
+        <ion-input [(ngModel)]="mode.phone" type="tel" clearInput></ion-input>
       </ion-item>
     </ion-item-group>
     <ion-item-group>
@@ -34,6 +34,27 @@
         <ion-icon name="trash" danger item-left></ion-icon>
         Effacement des informations propriétaire
       </ion-item>
+      <ion-item *ngIf="mode.test" (click)="showParams()">
+        <ion-icon name="information-circle" primary item-left></ion-icon>
+        Voir la liste des sites
+      </ion-item>
     </ion-item-group>
   </ion-list>
+  <ion-card no-paddinf *ngIf="lstSites && mode.test">
+    <ion-card-header>Liste des numéros paramétrés</ion-card-header>
+    <ion-card-content>
+      <ion-list text-wrap>
+        <ion-item-group *ngFor="let site of lstSites | keys">
+          <ion-item-divider secondary>{{site.key}}</ion-item-divider>
+          <ion-item *ngFor="let item of site.value">
+            <h3>{{item.nom}}</h3>
+            <p>{{item.adresse}}</p>
+            <h4 primary>{{item.fonction}}</h4>
+            <h3 item-right>{{item.telephone}}&nbsp;&nbsp;&nbsp;</h3>
+          </ion-item>
+        </ion-item-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

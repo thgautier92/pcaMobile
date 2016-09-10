@@ -1,3 +1,11 @@
 .declenchement-pca {
-
+    .select-text{
+            white-space: pre-wrap;
+    }
+    .item{
+        padding-left:0px;
+    }
+    ion-select {
+        max-width: 60%;
+    }
 }
