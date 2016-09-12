@@ -23,7 +23,7 @@ export class MyApp {
   constructor(private platform: Platform, private menu: MenuController, private pcaServices: PcaServices) {
     this.rootPage = TabsPage;
     this.pages = [
-      { title: 'Accueil', component: HomePage, icon: 'home', color: "primary" },
+      { title: 'Accueil', component: TabsPage, icon: 'home', color: "primary" },
       //{ title: 'Contactez le support', component: SupportPage, icon: 'help-buoy', color: "danger" },
       { title: 'Paramètres', component: ParamsPage, icon: 'cog', color: "primary" }
     ];

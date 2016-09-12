@@ -16,7 +16,7 @@ export class AlertLogPage {
     this.sendLog = this.navParams['data'];
   }
   close() {
-    this.navCtrl.pop();
+    this.navCtrl.popToRoot();
   }
 }
 

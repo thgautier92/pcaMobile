@@ -42,7 +42,7 @@ export class DeclenchementPcaPage {
       });
   }
   loadPersons() {
-    console.log("Filter for ", this.pca.site)
+    //console.log("Filter for ", this.pca.site)
     this.persons = this.sitesParam['personnels'].filter(item => item['site'] == this.pca['site'])
   }
   verifAuth(person) {
@@ -76,7 +76,7 @@ export class DeclenchementPcaPage {
   }
   checkPhoneNumberUser(person) {
     this.local.get('pca_phonenumber').then(phoneNumber => {
-      console.log("Local : ", phoneNumber);
+      //console.log("Local : ", phoneNumber);
       if (phoneNumber && phoneNumber !== null && phoneNumber.length > 0) {
         if (person['telephone'] === phoneNumber) {
           //console.log("Envoie du SMS");

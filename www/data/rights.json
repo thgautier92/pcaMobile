@@ -1,22 +1,28 @@
 {
 	"membersauthorized": [
 		{
-			"site": "xxxx",
-			"nom": "NOM PRENOM",
-			"fonction": "Chargé études",
-			"telephone": "0699216805"
+			"site": "DSI Paris",
+			"nom": "HAJAMI Morad",
+			"fonction": "Support Utilisateur",
+			"telephone": "0645126901"
 		},
 		{
-			"site": "DSI Orleans",
+			"site": "DSI Orléans",
 			"nom": "LUCAS Christophe",
 			"fonction": "Responsable DSI",
-			"telephone": "0699216805"
+			"telephone": "0630847092"
 		},
 		{
 			"site": "Siège",
-			"nom": "VANEL Philippe",
+			"nom": "VIOLIER Axel",
+			"fonction": "Responsable DAGE",
+			"telephone": "0663857062"
+		},
+		{
+			"site": "Siège",
+			"nom": "BONHOMME Olivier",
 			"fonction": "Responsable DRH",
-			"telephone": "0699216805"
+			"telephone": "0632389896"
 		}
 	]
 }
